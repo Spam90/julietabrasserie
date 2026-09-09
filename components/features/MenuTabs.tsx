@@ -28,6 +28,7 @@ export function MenuTabs({ categories, active, onChange }: Props) {
               <button
                 type="button"
                 onClick={() => onChange(c.id)}
+                aria-pressed={isActive}
                 className={cn(
                   "relative whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors",
                   isActive

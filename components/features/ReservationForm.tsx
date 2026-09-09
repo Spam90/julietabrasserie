@@ -6,7 +6,7 @@ import { Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { restaurant } from "@/data/restaurant";
-import type { ReservationFormData, ReservationStatus } from "@/lib/types";
+import type { ReservationConfirmation, ReservationFormData, ReservationStatus } from "@/lib/types";
 
 type Field = keyof ReservationFormData;
 
@@ -55,7 +55,7 @@ function selectCn(invalid: boolean) {
   return cn(inputCn(invalid), "appearance-none");
 }
 
-function SuccessView({ reservation }: { reservation: any }) {
+function SuccessView({ reservation }: { reservation: ReservationConfirmation }) {
   return (
     <div className="rounded-xl border border-line/30 bg-cream p-6">
       <div className="mb-4 flex items-center gap-3 text-emerald-800">
@@ -122,7 +122,7 @@ export function ReservationForm() {
   const [form, setForm] = useState<ReservationFormData>(initial);
   const [status, setStatus] = useState<ReservationStatus>("idle");
   const [error, setError] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ReservationConfirmation | null>(null);
   const [touched, setTouched] = useState<Record<Field, boolean>>({
     date: false, time: false, guests: false, name: false,
     phone: false, email: false, occasion: false,
@@ -131,7 +131,7 @@ export function ReservationForm() {
   const errors = validate(form);
   const hasErrors = Object.values(errors).some(Boolean);
 
-  function set<K extends Field>(k: K, v: any) {
+  function set<K extends Field>(k: K, v: ReservationFormData[K]) {
     setForm((f) => ({ ...f, [k]: v }));
     setTouched((t) => ({ ...t, [k]: true }));
   }
@@ -150,17 +150,17 @@ export function ReservationForm() {
       });
       const json = await res.json().catch(() => null);
       if (!res.ok || !json?.ok) {
-        setStatus("error");
+        // Se mantiene status "error" para que el mensaje sea visible;
+        // el formulario sigue editable (disabled solo en "submitting").
         setError(json?.error || "No se pudo procesar la solicitud. Intente más tarde.");
-        setStatus("idle");
+        setStatus("error");
         return;
       }
       setStatus("success");
       setResult(json.reservation);
     } catch {
-      setStatus("error");
       setError("Error de conexión. Intente nuevamente.");
-      setStatus("idle");
+      setStatus("error");
     }
   }
 

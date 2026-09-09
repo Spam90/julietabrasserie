@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
 /* Ancho máximo deliberado: ~1240px para ritmo editorial sin saturar. */

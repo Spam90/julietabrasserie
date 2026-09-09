@@ -50,6 +50,7 @@ export interface Dish {
   image?: ImageRef; // /images/uploads/... o ausente (plato sin foto)
   tags?: DishTag[];
   category: string;
+  note?: string; // mensaje opcional del cliente para este plato
 }
 
 export interface Category {
@@ -94,6 +95,22 @@ export interface ReservedTable {
   guests: number;
   name: string;
   token: string;
+}
+
+/* Confirmación devuelta por POST /api/reserva (campo `reservation`). */
+export interface ReservationConfirmation {
+  id: string;
+  token: string;
+  date: string;
+  time: string;
+  guests: number;
+  name: string;
+  email: string;
+  phone: string;
+  occasion: string;
+  restaurant: string;
+  phoneHref: string;
+  status: string;
 }
 
 export interface ImageAsset {

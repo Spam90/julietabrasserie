@@ -8,8 +8,8 @@ import { fmtTime } from "@/lib/utils";
 import { Clock, MapPin } from "lucide-react";
 
 /*
- * PÃ¡gina de reservas: formulario + contexto del restaurante.
- * Arquitectura preparada para conectar un backend real vÃ­a /api/reserva.
+ * Página de reservas: formulario + contexto del restaurante.
+ * Arquitectura preparada para conectar un backend real vía /api/reserva.
  */
 export default function ReservasPage() {
   const days = restaurant.days;
@@ -43,11 +43,11 @@ export default function ReservasPage() {
                 <div>
                   <p className="font-medium text-ink">Horario</p>
                   <p className="text-sm text-smoke-mid">
-                    {days.weekday.join(", ")}: {fmtTime(h.weekday.open)} â€“{" "}
+                    {days.weekday.join(", ")}: {fmtTime(h.weekday.open)} –{" "}
                     {fmtTime(h.weekday.close)}
                   </p>
                   <p className="text-sm text-smoke-mid">
-                    {days.weekend.join(", ")}: {fmtTime(h.weekend.open)} â€“{" "}
+                    {days.weekend.join(", ")}: {fmtTime(h.weekend.open)} –{" "}
                     {fmtTime(h.weekend.close)}
                   </p>
                 </div>

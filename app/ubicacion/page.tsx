@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";

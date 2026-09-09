@@ -30,7 +30,7 @@ export function MenuItemCard({ dish, featured = false }: Props) {
             featured ? "w-full" : "h-16 w-16 rounded-lg",
           )}
         >
-                    <Photo
+          <Photo
             src={dish.image!}
             alt={`Plato ${dish.name}`}
             width={800}

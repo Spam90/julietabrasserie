@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, MapPin, Phone } from "lucide-react";
-import { cn, fmtTime } from "@/lib/utils";
+import { fmtTime } from "@/lib/utils";
 import { restaurant } from "@/data/restaurant";
 
 const links = [

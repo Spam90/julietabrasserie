@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Photo } from "@/components/ui/Photo";
 import { restaurant } from "@/data/restaurant";
+import { featuredDishes } from "@/data/menu";
 
 export default function Home() {
   return (
@@ -86,17 +87,23 @@ export default function Home() {
             Tres platos que definen nuestra cocina.
           </p>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <figure key={i} className="group">
+            {featuredDishes.map((dish) => (
+              <figure key={dish.id} className="group">
                 <Photo
-                  src={"/images/uploads/dish_" + (i + 1) + ".jpg"}
-                  alt={"Plato destacado " + (i + 1)}
+                  src={dish.image ?? "/images/uploads/dish_1.jpg"}
+                  alt={dish.name}
                   width={1200}
                   height={800}
                   rounded="md"
                   cover
-                  className="aspect-square w-full"
+                  className="w-full"
                 />
+                <figcaption className="mt-3 flex items-baseline justify-between gap-2">
+                  <span className="font-display text-lg text-ink">{dish.name}</span>
+                  <span className="text-sm font-medium text-ink">
+                    {dish.price != null ? `RD$${dish.price}` : "Consultar"}
+                  </span>
+                </figcaption>
               </figure>
             ))}
           </div>

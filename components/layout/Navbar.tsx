@@ -36,6 +36,16 @@ export function Navbar() {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
+  // Cierre con Escape (accesibilidad de teclado).
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const isActive = (href: string) =>
     pathname === href.split("#")[0] || (href.startsWith("/#") && pathname === "/");
 
@@ -96,7 +106,9 @@ export function Navbar() {
           </Button>
           <IconButton
             variant="ghost"
-            aria-label="Abrir menú"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
             className="md:hidden"
           >
@@ -117,6 +129,7 @@ export function Navbar() {
               onClick={close}
             />
             <motion.aside
+              id="mobile-menu"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
