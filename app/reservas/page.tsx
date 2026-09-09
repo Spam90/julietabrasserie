@@ -7,6 +7,13 @@ import { restaurant } from "@/data/restaurant";
 import { fmtTime } from "@/lib/utils";
 import { Clock, MapPin } from "lucide-react";
 
+export const metadata = {
+  title: "Reservas",
+  description:
+    "Reserve su mesa en Julieta Brasserie: desayunos, brunch, almuerzo y cena en Piantini, Santo Domingo. Complete el formulario y le contactamos para confirmar.",
+  alternates: { canonical: "/reservas" },
+};
+
 /*
  * Página de reservas: formulario + contexto del restaurante.
  * Arquitectura preparada para conectar un backend real vía /api/reserva.

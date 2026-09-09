@@ -7,6 +7,12 @@ import { MapEmbed } from "@/components/features/MapEmbed";
 import { restaurant } from "@/data/restaurant";
 import { fmtTime } from "@/lib/utils";
 
+export const metadata = {
+  title: "Ubicación",
+  description: `${restaurant.address.full} Teléfono: ${restaurant.phone}.`,
+  alternates: { canonical: "/ubicacion" },
+};
+
 export default function UbicacionPage() {
   const a = restaurant.address;
   const h = restaurant.hours;

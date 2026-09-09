@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, fmtDate } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { restaurant } from "@/data/restaurant";
 import type { ReservationConfirmation, ReservationFormData, ReservationStatus } from "@/lib/types";
@@ -72,7 +72,7 @@ function SuccessView({ reservation }: { reservation: ReservationConfirmation }) 
       </p>
 
       <div className="space-y-2 text-sm">
-        <Row label="Fecha y hora" value={`${reservation.date} · ${reservation.time}`} />
+        <Row label="Fecha y hora" value={`${fmtDate(reservation.date)} · ${reservation.time}`} />
         <Row label="Personas" value={`${reservation.guests} ${reservation.guests === 1 ? "persona" : "personas"}`} />
         <Row label="Nombre" value={reservation.name} />
         <Row label="Email" value={reservation.email} />

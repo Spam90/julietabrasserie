@@ -5,6 +5,13 @@ import { GalleryMasonry } from "@/components/features/GalleryMasonry";
 import { restaurant } from "@/data/restaurant";
 import type { GalleryItem } from "@/lib/types";
 
+export const metadata = {
+  title: "Galería",
+  description:
+    "Un recorrido visual por el comedor, la terraza y los platos que definen Julieta Brasserie en Piantini, Santo Domingo.",
+  alternates: { canonical: "/galeria" },
+};
+
 const gallery: GalleryItem[] = [
   { id: "g1", src: "/images/uploads/hero_cover.jpg", alt: "Comedor principal", width: 1280, height: 853, aspect: "landscape", caption: "Comedor principal" },
   { id: "g2", src: "/images/uploads/hero_food.jpg", alt: "Gastronomía", width: 1280, height: 853, aspect: "landscape", caption: "Platos de la carta" },

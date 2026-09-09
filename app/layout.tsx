@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     title: "Julieta Brasserie — Brasserie en Piantini",
     description:
       "Desayunos, brunch, almuerzo y cena en Piantini. Cocina cuidada, ambiente cálido y cócteles artesanales en Santo Domingo.",
+    images: [
+      {
+        url: "/images/uploads/hero_cover.jpg",
+        width: 1280,
+        height: 853,
+        alt: "Comedor principal de Julieta Brasserie con luz natural",
+      },
+    ],
   },
   robots: { index: true, follow: true },
   metadataBase: new URL(SITE_URL),
